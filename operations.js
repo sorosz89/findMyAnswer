@@ -1,13 +1,18 @@
-const BackGround = require('./config/background');
-const driverSetup = new BackGround();
-const urls = require('./data/urls')
-
-browser = driverSetup.init();
+const urls = require('./data/urls.json');
 
 class Operations {
+   
     openContact(contact){
         let contactURL = `${urls.messenger}${contact}` 
-        return browser.get(contactURL);
+        return driver.get(contactURL);
+    }
+
+    sleep(number){
+        return driver.sleep(number)
+    }
+
+    close(){
+        return driver.quit();
     }
 }
 

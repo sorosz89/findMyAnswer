@@ -1,7 +1,12 @@
+const BackGround = require('./config/background');
+const driverSetup = new BackGround();
+global.driver = driverSetup.init();
+
 const Operations = require('./operations');
 const Login = require('./ui/po/login')
-let operations = new Operations();
+let frame = new Operations();
 let login = new Login();
 
-operations.openContact('orosz.sanyika');
+frame.openContact('orosz.sanyika');
 login.logIn('testUser')
+
