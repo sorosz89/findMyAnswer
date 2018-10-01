@@ -1,0 +1,16 @@
+{
+  "name": "findmyanswer",
+  "version": "1.0.0",
+  "description": "FindMyAnswer is an application to poll new facebook messages and answer them automatically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sandor Orosz",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^2.42.0",
+    "geckodriver": "^1.12.2",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
