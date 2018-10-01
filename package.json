@@ -4,7 +4,8 @@
   "description": "FindMyAnswer is an application to poll new facebook messages and answer them automatically.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "finder": "node ./index.js"
   },
   "author": "Sandor Orosz",
   "license": "ISC",
