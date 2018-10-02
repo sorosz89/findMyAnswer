@@ -1,5 +1,4 @@
 const elements = require('../selectors/messenger');
-let driver = global.driver;
 let inputField = driver.findElement(By.css(elements.inputField));
 let likeButton = driver.findElement(By.css(elements.likeButton));
 let lastIncoming = driver.findElement(By.css(elements.lastIncoming));

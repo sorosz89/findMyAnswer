@@ -1,13 +1,16 @@
 const elements = require('../selectors/login');
-let driver = global.driver;
-let userNameInput = driver.findElement(By.css(elements.userName));
-let passwordInput = driver.findElement(By.css(elements.password));
-let confirmButton = driver.findElement(By.css(elements.confirmButton));
+const users = require('../../data/users');
 
 class Login {
+    constructor(driver) {
+        this.driver = driver;
+        this.USERINPUT = this.driver.findElement(By.css(elements.userName));
+        this.PWINPUT = this.driver.findElement(By.css(elements.password));
+        this.confirmButton = this.driver.findElement(By.css(elements.confirmButton));
+    }
 
     isLoaded() {
-        return passwordInput.isDisplayed();
+        return this.PWINPUT.isDisplayed();
     }
 
     waitForLoginPage() {
@@ -15,19 +18,21 @@ class Login {
     }
 
     sendUserName(username) {
-        return userNameInput.sendKeys('username');
+        return this.USERINPUT.sendKeys('username');
     }
 
     sendPassword(password) {
-        return passwordInput.sendKeys('password')
+        return PWINPUT.sendKeys('password')
     }
 
     getUser(id) {
-        profile = users[`id`];
-        return {
+        let profile = users[id];
+        console.log(profile);
+        let client = {
             username: profile.username,
             password: profile.password
         }
+        return client
     }
 
     confirm() {
@@ -35,7 +40,7 @@ class Login {
     }
 
     logIn(id) {
-        client = this.getUser(id);
+        let client = this.getUser(id);
         return this.sendUserName(client.username).then(() => this.sendPassword(client.password)).then(() => this.confirm())
     }
 }

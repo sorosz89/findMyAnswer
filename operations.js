@@ -1,18 +1,22 @@
 const urls = require('./data/urls.json');
 
 class Operations {
-   
-    openContact(contact){
-        let contactURL = `${urls.messenger}${contact}` 
-        return driver.get(contactURL);
+    constructor(driver) {
+        this.driver = driver;
     }
 
-    sleep(number){
-        return driver.sleep(number)
+    openContact(contact) {
+        let contactURL = `${urls.messenger}${contact}`
+        console.log(`Opening ${contactURL}`);
+        return this.driver.get(contactURL);
     }
 
-    close(){
-        return driver.quit();
+    sleep(number) {
+        return this.driver.sleep(number)
+    }
+
+    close() {
+        return this.driver.quit();
     }
 }
 
