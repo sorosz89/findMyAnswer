@@ -1,6 +1,6 @@
 module.exports = users = {
     testUser: {
-        userName: 'orosz.sanyika',
+        username: 'orosz.sanyika',
         password: 'invalid'
     }
 }

@@ -4,44 +4,51 @@ const users = require('../../data/users');
 class Login {
     constructor(driver) {
         this.driver = driver;
-        this.USERINPUT = this.driver.findElement(By.css(elements.userName));
-        this.PWINPUT = this.driver.findElement(By.css(elements.password));
+        this.USERINPUT = this.driver.findElement(By.css(elements.userNameInput));
+        this.PWINPUT = this.driver.findElement(By.css(elements.passwordInput));
         this.confirmButton = this.driver.findElement(By.css(elements.confirmButton));
     }
 
-    isLoaded() {
-        return this.PWINPUT.isDisplayed();
+    async isLoaded() {
+        return await this.PWINPUT.isDisplayed();
     }
 
-    waitForLoginPage() {
-        return driver.wait(() => this.isLoaded());
+    async waitForLoginPage() {
+        await driver.wait
+        return await this.isLoaded();
     }
 
-    sendUserName(username) {
-        return this.USERINPUT.sendKeys('username');
+    async sendUserName(username) {
+        console.log('sendUserName: ', username);
+        return await this.USERINPUT.sendKeys(username);
     }
 
-    sendPassword(password) {
-        return PWINPUT.sendKeys('password')
+    async sendPassword(password) {
+        return await PWINPUT.sendKeys(password)
     }
 
     getUser(id) {
+        console.log("users: ", users);
         let profile = users[id];
-        console.log(profile);
+        console.log('profile: ', profile);
         let client = {
             username: profile.username,
             password: profile.password
         }
+        console.log('client: ', client)
         return client
     }
 
-    confirm() {
-        return confirmButton.click();
+    async confirm() {
+        return await confirmButton.click();
     }
 
-    logIn(id) {
+    async enterCredentials(id) {
+        console.log('enterCredentials:', id);
         let client = this.getUser(id);
-        return this.sendUserName(client.username).then(() => this.sendPassword(client.password)).then(() => this.confirm())
+        await this.sendUserName(client.username)
+        await this.sendPassword(client.password)
+        return await this.confirm()
     }
 }
 
