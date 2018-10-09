@@ -1,32 +1,36 @@
 const elements = require('../selectors/messenger');
-let inputField = driver.findElement(By.css(elements.inputField));
-let likeButton = driver.findElement(By.css(elements.likeButton));
-let lastIncoming = driver.findElement(By.css(elements.lastIncoming));
 
 class Messenger {
-
-    isLoaded() {
-        return inputField.isDisplayed();
+    constructor(driver) {
+        this.driver = driver;
+        this.INPUT = this.driver.findElement(By.css(elements.input));
+        this.LIKE = this.driver.findElement(By.css(elements.likeButton));
+        this.INCOMING = this.driver.findElement(By.css(elements.lastIncoming));
     }
 
-    waitForLoading() {
-        return driver.wait(() => this.isLoaded());
+    async isLoaded() {
+        return await this.INPUT.isDisplayed();
     }
 
-    getIncomingMessage() {
-        return lastIncoming.getText();
+    async waitForLoading() {
+        return await this.driver.wait(() => this.isLoaded());
     }
 
-    pressEnter() {
-        return inputField.sendKeys(driver.Key.ENTER);
+    async getIncomingMessage() {
+        return await this.INCOMING.getText();
     }
 
-    sendMessage(message) {
-        return inputField.sendKeys(message);
+    async pressEnter() {
+        return await this.INPUT.sendKeys(driver.Key.ENTER);
     }
 
-    sendLike() {
-        return likeButton.click();
+    async sendMessage(message) {
+        console.log("sendMessage", message)
+        return await this.INPUT.sendKeys(message);
+    }
+
+    async sendLike() {
+        return await this.LIKE.click();
     }
 }
 

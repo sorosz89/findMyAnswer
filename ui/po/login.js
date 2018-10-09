@@ -6,7 +6,7 @@ class Login {
         this.driver = driver;
         this.USERINPUT = this.driver.findElement(By.css(elements.userNameInput));
         this.PWINPUT = this.driver.findElement(By.css(elements.passwordInput));
-        this.confirmButton = this.driver.findElement(By.css(elements.confirmButton));
+        this.CONFIRM = this.driver.findElement(By.css(elements.confirmButton));
     }
 
     async isLoaded() {
@@ -24,7 +24,7 @@ class Login {
     }
 
     async sendPassword(password) {
-        return await PWINPUT.sendKeys(password)
+        return await this.PWINPUT.sendKeys(password)
     }
 
     getUser(id) {
@@ -40,7 +40,7 @@ class Login {
     }
 
     async confirm() {
-        return await confirmButton.click();
+        return await this.CONFIRM.click();
     }
 
     async enterCredentials(id) {

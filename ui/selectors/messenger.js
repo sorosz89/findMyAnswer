@@ -1,3 +1,4 @@
 module.exports = {
-    input : '.input'
+    input : 'div[aria-label="Type a message..."]',
+    likeButton: 'a[aria-labe="Like button"]'
 }
