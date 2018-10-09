@@ -1,6 +1,6 @@
 const BackGround = require('./config/background');
 const driverSetup = new BackGround();
-const Operations = require('./operations');
+const Operations = require('./config/operations');
 const Login = require('./ui/po/login');
 const Messenger = require('./ui/po/messenger');
 
