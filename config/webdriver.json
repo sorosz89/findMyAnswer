@@ -1,0 +1,5 @@
+{
+    "arguments": {
+        "args": ["--disable-infobars", "--disable-notifications"]
+    }
+}

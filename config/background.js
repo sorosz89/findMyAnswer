@@ -1,18 +1,13 @@
 require('chromedriver');
 const webdriver = require("selenium-webdriver");
+const chromeOptions = require("./webdriver");
+let chromeCapabilities = webdriver.Capabilities.chrome()
 
 class BackGround {
 
     init() {
-        let chromeCapabilities = webdriver.Capabilities.chrome()
-        let chromeOptions = {
-            'args': ['--disable-infobars', "--disable-notifications"]
-        };
-
-        chromeCapabilities.set('chromeOptions', chromeOptions);
-
+        chromeCapabilities.set('chromeOptions', chromeOptions.arguments);
         let driver = new webdriver.Builder().withCapabilities(chromeCapabilities).build();
-
         global.By = webdriver.By;
         return driver;
     }
