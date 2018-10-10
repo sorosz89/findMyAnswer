@@ -17,7 +17,6 @@ async function finder() {
     await messenger.sendMessage("Hi! I am Sandor's chatbot! How its going? :)");
     await messenger.pressEnter();
     return driver.sleep(500);
-
 };
 
 finder();

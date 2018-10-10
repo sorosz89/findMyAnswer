@@ -14,12 +14,11 @@ class Login {
     }
 
     async waitForLoginPage() {
-        await driver.wait
+        await driver.wait()
         return await this.isLoaded();
     }
 
     async sendUserName(username) {
-        console.log('sendUserName: ', username);
         return await this.USERINPUT.sendKeys(username);
     }
 
@@ -28,14 +27,11 @@ class Login {
     }
 
     getUser(id) {
-        console.log("users: ", users);
         let profile = users[id];
-        console.log('profile: ', profile);
         let client = {
             username: profile.username,
-            password: profile.password
+            password: process.env.PW_VAR
         }
-        console.log('client: ', client)
         return client
     }
 
@@ -44,7 +40,6 @@ class Login {
     }
 
     async enterCredentials(id) {
-        console.log('enterCredentials:', id);
         let client = this.getUser(id);
         await this.sendUserName(client.username)
         await this.sendPassword(client.password)

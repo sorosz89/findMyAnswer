@@ -1,22 +1,22 @@
-const urls = require('./data/urls.json');
+const urls = require('../data/urls.json');
 
 class Operations {
     constructor(driver) {
         this.driver = driver;
     }
 
-    openContact(contact) {
+   async openContact(contact) {
         let contactURL = `${urls.messenger}${contact}`
         console.log(`Opening ${contactURL}`);
-        return this.driver.get(contactURL);
+        return await this.driver.get(contactURL);
     }
 
-    sleep(number) {
-        return this.driver.sleep(number)
+    async sleep(number) {
+        return await this.driver.sleep(number)
     }
 
-    close() {
-        return this.driver.quit();
+   async close() {
+        return await this.driver.quit();
     }
 }
 
