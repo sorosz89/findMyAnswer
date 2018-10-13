@@ -1,3 +1,4 @@
 {
-    "messenger": "https://facebook.com/messages/t/"
+    "messenger": "https://facebook.com/messages/t/",
+    "mobileMessenger": "https://m.facebook.com/messages/read/?fbid="
 }

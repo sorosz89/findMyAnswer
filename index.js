@@ -10,16 +10,33 @@ async function finder() {
     let login = new Login(driver);
     let messenger = new Messenger(driver);
 
-    await operations.openContact('orosz.sanyika')
-    await driver.sleep(500);
+    //await operations.openContact('orosz.sanyika')
+    await operations.openContact('laszlo.racz.7334')
+    // await operations.openContact('levente.varga.102')
+    //await operations.openContact('orosz.sanyika')
     await login.enterCredentials('testUser')
-    await driver.sleep(6000);
-    await messenger.sendMessage("Hi! I am Sandor's chatbot! How its going? :)");
-    await messenger.pressEnter();
-    return driver.sleep(500);
+    await driver.sleep(2000);
+
+
+    //await messenger.sendLike()
+    //await messenger.sendMessage("Hi! I am Sandor's chatbot! How its going? :)");
+    // await messenger.clickSendButton();
+
+    // await messenger.sendMessage("Listen to this song!");
+    //await messenger.clickSendButton();
+
+    // await messenger.sendMessage("https://www.youtube.com/watch?v=mpMg1upld0w");
+    // await messenger.clickSendButton();
+
+    // await driver.quit();
+
+    await messenger.readLastIncoming()
+
+
 };
 
 finder();
+
 
 process.on('unhandledRejection', () => {});
 process.on('rejectionHandled', (e) => console.log(e));

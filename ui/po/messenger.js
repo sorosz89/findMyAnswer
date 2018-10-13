@@ -1,36 +1,60 @@
 const elements = require('../selectors/messenger');
+const until = require('selenium-webdriver').until;
 
 class Messenger {
     constructor(driver) {
         this.driver = driver;
-        this.INPUT = this.driver.findElement(By.css(elements.input));
-        this.LIKE = this.driver.findElement(By.css(elements.likeButton));
-        this.INCOMING = this.driver.findElement(By.css(elements.lastIncoming));
+    }
+
+    get like() {
+        return this.driver.findElement(By.css(elements.likeButton));
+    }
+
+    get input() {
+        return this.driver.findElement(By.css(elements.input));
+    }
+
+    get send() {
+        return this.driver.findElement(By.xpath(elements.send));
+    }
+
+    get incomings() {
+        return this.driver.findElements(By.css(elements.incoming));
+    }
+
+    async readLastIncoming() {
+        console.log("readmessage")
+        this.driver.sleep(1000);
+        return await this.incomings.getText().then(text => console.log(text));
     }
 
     async isLoaded() {
-        return await this.INPUT.isDisplayed();
+        await this.input.isDisplayed();
     }
 
     async waitForLoading() {
-        return await this.driver.wait(() => this.isLoaded());
+        await this.driver.wait(() => this.isLoaded());
     }
 
     async getIncomingMessage() {
-        return await this.INCOMING.getText();
+        await this.INCOMING.getText();
     }
 
     async pressEnter() {
-        return await this.INPUT.sendKeys(driver.Key.ENTER);
+        await this.input.sendKeys(this.driver.Key.ENTER);
+    }
+
+    async clickSendButton() {
+        await this.driver.sleep(1000);
+        await this.send.click()
     }
 
     async sendMessage(message) {
-        console.log("sendMessage", message)
-        return await this.INPUT.sendKeys(message);
+        await this.input.sendKeys(message);
     }
 
     async sendLike() {
-        return await this.LIKE.click();
+        await this.like.click();
     }
 }
 

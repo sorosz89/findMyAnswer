@@ -5,8 +5,9 @@ class Operations {
         this.driver = driver;
     }
 
-   async openContact(contact) {
-        let contactURL = `${urls.messenger}${contact}`
+    async openContact(contact, isMobile) {
+        let base = isMobile ? urls.mobileMessenger : urls.messenger;
+        let contactURL = `${base}${contact}`
         console.log(`Opening ${contactURL}`);
         return await this.driver.get(contactURL);
     }
@@ -15,7 +16,7 @@ class Operations {
         return await this.driver.sleep(number)
     }
 
-   async close() {
+    async close() {
         return await this.driver.quit();
     }
 }
