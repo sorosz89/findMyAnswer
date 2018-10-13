@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "finder": "node ./index.js"
+    "sonar": "node ./sonar.js"
   },
   "author": "Sandor Orosz",
   "license": "ISC",

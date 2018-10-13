@@ -2,20 +2,26 @@ const {
     greetings,
     questions
 } = require('../data/answers');
+const keywords = require('../data/keywords');
 
 class FindMyAnswer {
 
     isQuestion(message) {
-        return message.contains('?');
+        return message.includes('?');
     }
 
     isGreetings(message) {
-        return message.contains(greetings.hi);
+        return message.includes(greetings.hi);
     }
 
     getAnswer(message) {
-        return this.isGreetings(message) ? greetings.hi : questions.whatsUp;
+        if (this.isQuestion(message)) {
+            return greetings.hi;
+        } else {
+            return questions.whatsUp;
+        }
     }
+
 }
 
 module.exports = FindMyAnswer

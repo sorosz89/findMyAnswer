@@ -24,10 +24,12 @@ class Messenger {
 
     async readIncoming() {
         const messageItems = await this.incomings;
-        let lastMessageItem = messageItems[messageItems.length - 1];
-        const message = await lastMessageItem.getText()
-        console.log("New message: ", message);
-        return message;
+        if (messageItems && messageItems.length != 0) {
+            let lastMessageItem = messageItems[messageItems.length - 1];
+            const message = await lastMessageItem.getText()
+            return message;
+        }
+        console.warn("readIncoming:No incoming messages!")
     }
 
     async isLoaded() {
@@ -52,6 +54,7 @@ class Messenger {
     }
 
     async sendMessage(message) {
+        console.log('messsage sent: ', message);
         await this.input.sendKeys(message);
     }
 
