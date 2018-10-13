@@ -30,7 +30,7 @@ async function finder() {
 
     // await driver.quit();
 
-    await messenger.readLastIncoming()
+    await messenger.readIncoming()
 
 
 };

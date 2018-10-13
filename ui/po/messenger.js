@@ -19,13 +19,15 @@ class Messenger {
     }
 
     get incomings() {
-        return this.driver.findElements(By.css(elements.incoming));
+        return this.driver.findElements(By.xpath(elements.incoming));
     }
 
-    async readLastIncoming() {
-        console.log("readmessage")
-        this.driver.sleep(1000);
-        return await this.incomings.getText().then(text => console.log(text));
+    async readIncoming() {
+        const messageItems = await this.incomings;
+        let lastMessageItem = messageItems[messageItems.length - 1];
+        const message = await lastMessageItem.getText()
+        console.log("New message: ", message);
+        return message;
     }
 
     async isLoaded() {
