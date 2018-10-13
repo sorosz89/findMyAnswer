@@ -33,7 +33,7 @@ function sonarLogger() {
 async function sonar() {
     let message = await po.messenger.readIncoming();
     if (message != read) {
-        const listening = setInterval(sonarLogger, 1000);
+        const listening = setInterval(sonarLogger, timing.sonarLogger);
         console.log('New message detected: ', message);
         read = message;
         let answer = finder.getAnswer(message)
@@ -46,7 +46,7 @@ async function sonar() {
 
 (async function run() {
     po = await setEnvironment();
-    const timer = setInterval(sonar, 10000);
+    const timer = setInterval(sonar, timing.defaultInterval);
     await po.operations.openContact(contacts.os);
     await po.login.enterCredentials('testUser')
 })()
