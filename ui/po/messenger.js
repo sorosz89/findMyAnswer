@@ -32,30 +32,22 @@ class Messenger {
         console.warn("readIncoming:No incoming messages!")
     }
 
-    async isLoaded() {
-        await this.input.isDisplayed();
-    }
-
-    async waitForLoading() {
-        await this.driver.wait(() => this.isLoaded());
-    }
-
-    async getIncomingMessage() {
-        await this.INCOMING.getText();
-    }
-
     async pressEnter() {
         await this.input.sendKeys(this.driver.Key.ENTER);
     }
 
     async clickSendButton() {
-        await this.driver.sleep(1000);
-        await this.send.click()
+        await this.driver.wait(until.elementIsVisible(By.xpath(elements.send), timing.sendTimeout));
+        await this.send.click();
+    }
+
+    async typeMessage(message){
+        await this.input.sendKeys(message);
     }
 
     async sendMessage(message) {
-        console.log('messsage sent: ', message);
-        await this.input.sendKeys(message);
+        await this.typeMessage(message);
+        await this.clickSendButton();
     }
 
     async sendLike() {

@@ -1,4 +1,5 @@
 {
     "sonarLogger": 1000,
-    "defaultInterval": 10000
+    "defaultInterval": 10000,
+    "sendTimeout": 500,
 }
