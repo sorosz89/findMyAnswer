@@ -52,5 +52,5 @@ async function sonar() {
     await po.login.logIn(contacts.os);
 })()
 
-process.on('unhandledRejection', (e) => {console.log(e)});
+process.on('unhandledRejection', (e) => {});
 process.on('rejectionHandled', (e) => console.log(e));

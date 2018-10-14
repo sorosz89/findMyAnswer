@@ -7,7 +7,7 @@ const keywords = require('../data/keywords');
 class Message extends String {
     constructor(message){
         super();
-        this.message = message;
+        this.message = message.toLowerCase();
     }
 
     isQuestion() {
@@ -16,6 +16,14 @@ class Message extends String {
 
     isGreetings() {
         return this.message.includes(greetings.hi);
+    }
+
+    isYouTubeLink(){
+        return this.message.includes('youtube.com')
+    }
+
+    getMatch(custom){
+        return this.message.includes(custom);
     }
 }
 
