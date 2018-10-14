@@ -45,11 +45,12 @@ async function sonar() {
 };
 
 (async function run() {
+    let partnerID = process.argv[2]
     po = await setEnvironment();
     const timer = setInterval(sonar, timing.defaultInterval);
-    await po.operations.openContact(contacts.os);
-    await po.login.enterCredentials('testUser')
+    await po.operations.openContact(contacts[partnerID]);
+    await po.login.logIn(contacts.os);
 })()
 
-process.on('unhandledRejection', () => {});
+process.on('unhandledRejection', (e) => {console.log(e)});
 process.on('rejectionHandled', (e) => console.log(e));

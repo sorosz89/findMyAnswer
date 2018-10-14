@@ -37,7 +37,7 @@ class Messenger {
     }
 
     async clickSendButton() {
-        await this.driver.wait(until.elementIsVisible(By.xpath(elements.send), timing.sendTimeout));
+        await this.driver.sleep(timing.sendTimeout)
         await this.send.click();
     }
 

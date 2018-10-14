@@ -1,5 +1,5 @@
 const elements = require('../selectors/login');
-const users = require('../../data/users');
+const contacts = require('../../data/contacts');
 
 class Login {
     constructor(driver) {
@@ -18,12 +18,12 @@ class Login {
         return this.driver.findElement(By.css(elements.confirmButton));
     }
 
-    async isLoaded() {
-        return await this.passwordInput.isDisplayed();
-    }
-
-    async waitForLoginPage() {
-        return await driver.wait(() => this.isLoaded());
+    getUser(id) {
+        let client = {
+            username: id,
+            password: process.env.PW_VAR
+        }
+        return client
     }
 
     async sendUserName(username) {
@@ -34,14 +34,6 @@ class Login {
         return await this.passwordInput.sendKeys(password)
     }
 
-    getUser(id) {
-        let client = {
-            username: users[id].username,
-            password: process.env.PW_VAR
-        }
-        return client
-    }
-
     async confirm() {
         return await this.confirmButton.click();
     }
@@ -50,9 +42,12 @@ class Login {
         let client = this.getUser(id)
         await this.sendUserName(client.username)
         await this.sendPassword(client.password)
-        return await this.confirm()
     }
 
+    async logIn(id) {
+        await this.enterCredentials(id);
+        await this.confirm();
+    }
 }
 
 module.exports = Login

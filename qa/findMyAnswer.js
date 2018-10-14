@@ -1,25 +1,24 @@
-const {
-    greetings,
-    questions
-} = require('../data/answers');
+const answers = require('../data/answers');
 const keywords = require('../data/keywords');
+const Message = require('./message');
 
 class FindMyAnswer {
 
-    isQuestion(message) {
-        return message.includes('?');
-    }
-
-    isGreetings(message) {
-        return message.includes(greetings.hi);
-    }
-
     getAnswer(message) {
-        if (this.isQuestion(message)) {
-            return greetings.hi;
-        } else {
-            return questions.whatsUp;
+        let answer = '';
+        console.log("getAnswer", message)
+        let m = new Message(message);
+        console.log("M:", m)
+        console.log("isQuestion", m.isQuestion());
+        if (m.isQuestion()) {
+            answer = answers.clarification.whatDoYouMean;
         }
+        if (m.isGreetings()) {
+            answer = answers.greetings.hi
+        } else {
+            answer = answers.defaults.iDontUnderstand;
+        }
+        return answer
     }
 
 }

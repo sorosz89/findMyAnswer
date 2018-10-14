@@ -6,6 +6,7 @@ const keywords = require('../data/keywords');
 
 class Message extends String {
     constructor(message){
+        super();
         this.message = message;
     }
 
@@ -18,4 +19,4 @@ class Message extends String {
     }
 }
 
-module.exports = FindMyAnswer
+module.exports = Message
