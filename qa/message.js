@@ -7,7 +7,7 @@ const keywords = require('../data/keywords');
 class Message extends String {
     constructor(message){
         super();
-        this.message = message.toLowerCase();
+        this.message = message;
     }
 
     isQuestion() {

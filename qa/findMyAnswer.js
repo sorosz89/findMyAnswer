@@ -62,9 +62,6 @@ class FindMyAnswer {
         if (m.getMatch('my presentation') || (m.getMatch('my demo'))) {
             answer = 'I think I should apply for a job at epam, or check mentoring program'
         }
-        else {
-            answer = answers.defaults.iDontUnderstand;
-        }
         return answer
     }
 

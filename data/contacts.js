@@ -5,5 +5,6 @@ module.exports = contacts = {
     fe: "eva.file",
     ba: "attila.bereczki.71",
     lv: "levente.varga.102",
-    an: "andrea.nyisalovits"
+    an: "andrea.nyisalovits",
+    bzs: "zsolt.bertalan.75"
 }
