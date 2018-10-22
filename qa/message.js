@@ -10,20 +10,24 @@ class Message extends String {
         this.message = message;
     }
 
+    get m (){
+        return this.message.toLowerCase();
+    }
+
     isQuestion() {
-        return this.message.includes('?');
+        return this.m.includes('?');
     }
 
     isGreetings() {
-        return this.message.includes(greetings.hi);
+        return this.m.includes(greetings.hi);
     }
 
     isYouTubeLink(){
-        return this.message.includes('youtube.com')
+        return this.m.includes('youtube.com')
     }
 
     getMatch(custom){
-        return this.message.includes(custom);
+        return this.m.includes(custom);
     }
 }
 

@@ -7,5 +7,6 @@ module.exports = contacts = {
     lv: "levente.varga.102",
     an: "andrea.nyisalovits",
     bzs: "zsolt.bertalan.75",
-    asz: "akosszucs90"
+    asz: "akosszucs90",
+    sonar: "sonar.thebot.9"
 }

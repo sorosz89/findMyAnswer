@@ -64,7 +64,6 @@ class FindMyAnswer {
         }
         return answer
     }
-
 }
 
 module.exports = FindMyAnswer
