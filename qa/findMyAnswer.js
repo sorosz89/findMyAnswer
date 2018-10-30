@@ -11,6 +11,9 @@ class FindMyAnswer {
         if (m.isQuestion()) {
             answer = answers.clarification.whatDoYouMean;
         }
+        if (m.getMatch('bye')) {
+            answer = answers.greetings.cu;
+        }
         if (m.isGreetings()) {
             answer = answers.greetings.hi
         }
@@ -50,17 +53,35 @@ class FindMyAnswer {
         if (m.getMatch('sandor orosz') || m.getMatch('orosz sandor') || m.getMatch('orosz sándor')) {
             answer = 'https://www.youtube.com/watch?v=siwpn14IE7E'
         }
+        if (m.getMatch('sandor orosz') || m.getMatch('orosz sandor') || m.getMatch('orosz sándor') && m.getMatch('who')) {
+            answer = 'He created me'
+        }
         if (m.getMatch('nice bot')) {
             answer = 'I know :P'
         }
         if (m.getMatch('how are you') || (m.getMatch('how are you today'))) {
+            answer = 'fine, thank you, and how are you?'
+        }
+        if (m.getMatch('what is up') || (m.getMatch("what's up"))) {
             answer = 'fine, thank you'
         }
         if (m.getMatch('work') || (m.getMatch('epam'))) {
             answer = 'yes, I work for epam'
         }
-        if (m.getMatch('my presentation') || (m.getMatch('my demo'))) {
-            answer = 'I think I should apply for a job at epam, or check mentoring program'
+        if (m.getMatch('thank you') || m.getMatch('thx') || (m.getMatch('thanks'))) {
+            answer = 'no problem, can I help with something else?'
+        }
+
+        if (m.getMatch('what kind of chatbot are you')) {
+            answer = 'yes, I work for epam'
+        }
+        if (m.getMatch('what about the presentation') || (m.getMatch('the demo'))) {
+            answer = 'I think I should apply for a job at epam and join to the Idea Pool community :)'
+        } else {
+            if (!answer) {
+                answer = answers.clarification.whatDoYouMean
+            }
+
         }
         return answer
     }

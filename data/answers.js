@@ -16,6 +16,7 @@ module.exports = answers = {
     },
     clarification: {
         whatDoYouMean: "What do you mean by this?",
+        moreClarification: "Coudl you please specify that?"
     },
     thankYou: {
         iAmFine: "I am fine, thank you!",
@@ -23,7 +24,7 @@ module.exports = answers = {
         thx: "thanks",
     },
     introduction: {
-        sonarLong: "I am SONAR, Sandor Orosz Node Answering Robot 2018",
+        sonarLong: "I am SONAR, Sandor Orosz NodeJS Answering Robot 2018",
         sonar: "I am SONAR",
     },
     haveNoTime: {
